@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('front-end App', () => {
+describe('from-end-wpa App', () => {
   let page: AppPage;
 
   beforeEach(() => {
