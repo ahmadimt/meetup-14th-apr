@@ -8,10 +8,13 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -39,8 +42,18 @@ public class NewsFeedController {
     return newsFeedService.save(NewsFeed.from(syndEntries));
   }
 
-  @PutMapping(value = "/newsfeed/",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PutMapping(value = "/newsfeed/",produces = MediaType.APPLICATION_JSON_VALUE)
   public NewsFeed updateNewsFeed(@RequestBody NewsFeedDto newsFeed){
     return newsFeedService.updateNewsFeed(newsFeed);
+  }
+
+  @GetMapping(value = "/newfeed", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<NewsFeedDto>> getAll(){
+    return ResponseEntity.ok(newsFeedService.getAllNewsFeed());
+  }
+
+  @GetMapping(value = "/newfeed", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> getAll(@RequestParam String title){
+    return ResponseEntity.ok(newsFeedService.getByTitle(title));
   }
 }

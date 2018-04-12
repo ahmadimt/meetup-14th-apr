@@ -1,5 +1,6 @@
 package com.clairvoyant.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,9 +14,21 @@ public class NewsFeedDto {
   private String link;
   private String title;
   private String contents;
-  private List<String> authors;
+  private List<String> authors = new ArrayList<>();
   private Date updatedDate;
   private Date publishedDate;
+
+  public static NewsFeedDto from(NewsFeed newsFeed) {
+
+    NewsFeedDto newsFeedDto = new NewsFeedDto();
+    newsFeedDto.setTitle(newsFeed.getTitle());
+    newsFeedDto.getAuthors().addAll(newsFeed.getAuthors());
+    newsFeedDto.setContents(newsFeed.getContents());
+    newsFeedDto.setPublishedDate(newsFeed.getPublishedDate());
+    newsFeed.setUpdatedDate(newsFeed.getUpdatedDate());
+    newsFeed.setLink(newsFeed.getLink());
+    return newsFeedDto;
+  }
 
   public String getLink() {
     return link;

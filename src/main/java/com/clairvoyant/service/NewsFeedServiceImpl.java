@@ -5,6 +5,7 @@ import com.clairvoyant.model.NewsFeedDto;
 import com.clairvoyant.repo.NewsFeedRepo;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +30,23 @@ public class NewsFeedServiceImpl implements NewsFeedService {
 
   @Override
   public NewsFeed updateNewsFeed(NewsFeedDto newsFeedDto) {
-    NewsFeed newsFeed =  newsFeedRepo.findByTitle(newsFeedDto.getTitle());
+    NewsFeed newsFeed = newsFeedRepo.findByTitle(newsFeedDto.getTitle());
 
-    if (Objects.nonNull(newsFeed)){
-      newsFeed = NewsFeed.from(newsFeed,newsFeedDto);
+    if (Objects.nonNull(newsFeed)) {
+      newsFeed = NewsFeed.from(newsFeed, newsFeedDto);
     }
     return newsFeedRepo.save(newsFeed);
+  }
+
+  @Override
+  public List<NewsFeedDto> getAllNewsFeed() {
+
+    return newsFeedRepo.findAll().stream().map(NewsFeedDto::from)
+        .collect(Collectors.toList());
+  }
+
+  @Override
+  public NewsFeedDto getByTitle(String title) {
+    return NewsFeedDto.from(newsFeedRepo.findByTitle(title));
   }
 }

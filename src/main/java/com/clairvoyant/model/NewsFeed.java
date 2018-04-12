@@ -2,6 +2,7 @@ package com.clairvoyant.model;
 
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndPerson;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +21,7 @@ public class NewsFeed {
   private String link;
   private String title;
   private String contents;
-  private List<String> authors;
+  private List<String> authors = new ArrayList<>();
   private Date updatedDate;
   private Date publishedDate;
 

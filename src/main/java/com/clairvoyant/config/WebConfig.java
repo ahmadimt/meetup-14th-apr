@@ -14,8 +14,8 @@ import java.util.EnumSet;
 /**
  * Created by Ruksad siddiqui on 12/4/18
  */
-@Configuration
-@EnableWebMvc
+//@Configuration
+//@EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
