@@ -5,9 +5,6 @@ import com.rometools.rome.feed.synd.SyndPerson;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,9 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
  **/
 
 @Document
-@Getter
-@Setter
-@ToString
 public class NewsFeed {
 
   @Id
@@ -29,6 +23,62 @@ public class NewsFeed {
   private List<String> authors;
   private Date updatedDate;
   private Date publishedDate;
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getContents() {
+    return contents;
+  }
+
+  public void setContents(String contents) {
+    this.contents = contents;
+  }
+
+  public List<String> getAuthors() {
+    return authors;
+  }
+
+  public void setAuthors(List<String> authors) {
+    this.authors = authors;
+  }
+
+  public Date getUpdatedDate() {
+    return updatedDate;
+  }
+
+  public void setUpdatedDate(Date updatedDate) {
+    this.updatedDate = updatedDate;
+  }
+
+  public Date getPublishedDate() {
+    return publishedDate;
+  }
+
+  public void setPublishedDate(Date publishedDate) {
+    this.publishedDate = publishedDate;
+  }
 
   public static List<NewsFeed> from(List<SyndEntry> syndEntries) {
     return syndEntries.stream().map(NewsFeed::from)
@@ -50,5 +100,12 @@ public class NewsFeed {
 
   private static String getName(SyndPerson syndPerson) {
     return syndPerson.getName();
+  }
+
+  public static NewsFeed from(NewsFeed newsFeed, NewsFeedDto newsFeedDto) {
+    newsFeed.setTitle(newsFeedDto.getTitle());
+    newsFeed.setContents(newsFeedDto.getContents());
+
+    return newsFeed;
   }
 }
