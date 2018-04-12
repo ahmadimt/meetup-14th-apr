@@ -18,34 +18,34 @@ import java.util.EnumSet;
 //@EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (!registry.hasMappingForPattern("/dist/**")) {
-            registry.addResourceHandler("/dist/**").addResourceLocations("classpath:/dist/");
-        }
-        if (!registry.hasMappingForPattern("/static/**")) {
-            registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        }
-        if (!registry.hasMappingForPattern("/**")) {
-            registry.addResourceHandler("/**").addResourceLocations("classpath:/dist/");
-        }
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    if (!registry.hasMappingForPattern("/dist/**")) {
+      registry.addResourceHandler("/dist/**").addResourceLocations("classpath:/dist/");
     }
+    if (!registry.hasMappingForPattern("/static/**")) {
+      registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
+    if (!registry.hasMappingForPattern("/**")) {
+      registry.addResourceHandler("/**").addResourceLocations("classpath:/dist/");
+    }
+  }
 
-    @Bean
-    public InternalResourceViewResolver internalViewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/dist/");
-        viewResolver.setSuffix(".html");
-        viewResolver.setOrder(2);
-        return viewResolver;
-    }
+  @Bean
+  public InternalResourceViewResolver internalViewResolver() {
+    InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+    viewResolver.setPrefix("/dist/");
+    viewResolver.setSuffix(".html");
+    viewResolver.setOrder(2);
+    return viewResolver;
+  }
 
-    @Bean
-    public FilterRegistrationBean webSecurityFiler() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new ResponseHeaderFilter());
-        registration.addUrlPatterns("/");
-        registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
-        return registration;
-    }
+  @Bean
+  public FilterRegistrationBean webSecurityFiler() {
+    FilterRegistrationBean registration = new FilterRegistrationBean();
+    registration.setFilter(new ResponseHeaderFilter());
+    registration.addUrlPatterns("/");
+    registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
+    return registration;
+  }
 }

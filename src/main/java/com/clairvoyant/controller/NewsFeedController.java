@@ -52,8 +52,8 @@ public class NewsFeedController {
     return ResponseEntity.ok(newsFeedService.getAllNewsFeed());
   }
 
-  @GetMapping(value = "/newfeed", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<NewsFeedDto> getAll(@RequestParam String title){
+  @GetMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> getByTitle(@RequestParam String title){
     return ResponseEntity.ok(newsFeedService.getByTitle(title));
   }
 }

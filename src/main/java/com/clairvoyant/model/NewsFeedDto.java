@@ -25,8 +25,8 @@ public class NewsFeedDto {
     newsFeedDto.getAuthors().addAll(newsFeed.getAuthors());
     newsFeedDto.setContents(newsFeed.getContents());
     newsFeedDto.setPublishedDate(newsFeed.getPublishedDate());
-    newsFeed.setUpdatedDate(newsFeed.getUpdatedDate());
-    newsFeed.setLink(newsFeed.getLink());
+    newsFeedDto.setUpdatedDate(newsFeed.getUpdatedDate());
+    newsFeedDto.setLink(newsFeed.getLink());
     return newsFeedDto;
   }
 
