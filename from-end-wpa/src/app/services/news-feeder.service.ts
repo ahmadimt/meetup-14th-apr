@@ -23,6 +23,11 @@ export class NewsFeederService {
 
   getUpdateOrCreatNewsFeed(rssFeed: RssFeed) {
     const options = { headers: this.httpHeaders };
-    return this.http.put(environment.REST_API_LOCATION + '/newsfeed/', rssFeed, options);
+    return this.http.post(environment.REST_API_LOCATION + '/newsfeed/', rssFeed, options);
+  }
+
+  getRssFeeds():Observable<any>{
+    let options = { headers: this.httpHeaders}
+    return this.http.get(environment.REST_API_LOCATION+'/all-rss-feeds');
   }
 }

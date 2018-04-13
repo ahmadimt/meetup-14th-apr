@@ -44,7 +44,8 @@ export class RssFeedViewComponent implements OnInit {
 
 
 
-  constructor(private newsFeederService: NewsFeederService, private broadCastdataServiceService: BroadCastdataServiceService) { }
+  actualData:any[]
+  constructor(private newsFeederService:NewsFeederService,private broadCastdataServiceService:BroadCastdataServiceService) { }
 
   ngOnInit() { }
 
@@ -70,12 +71,29 @@ export class RssFeedViewComponent implements OnInit {
     if (window.confirm('Are you sure you want to create?')) {
       event.newData['name'] += ' + added in code';
       event.confirm.resolve(event.newData);
-      console.log('create data', event);
-      const rssfeed = new RssFeed(event.newData);
-      this.newsFeederService.getUpdateOrCreatNewsFeed(rssfeed).subscribe(res => {
-        console.log('saved entity', res);
 
-      });
+      let rssfeed:any=Object.assign({},event.newData)
+      let authors:any[]=new Array();
+      authors.push(event.newData.authors)
+
+      rssfeed.id="any";
+      rssfeed.updatedDate='';
+      rssfeed.publishedDate= '';
+      rssfeed.authors=authors;
+
+      console.log("create data",rssfeed);
+
+      this.newsFeederService.getUpdateOrCreatNewsFeed(rssfeed).subscribe(res=>{
+        console.log("saved entity",res);
+
+      },(error)=>{
+
+      },()=>{
+          this.newsFeederService.getRssFeeds().subscribe(res=>{
+            this.actualData=res;
+            this.broadCastdataServiceService.source=new LocalDataSource(this.actualData); ;
+          })
+      })
     } else {
       event.confirm.reject();
     }

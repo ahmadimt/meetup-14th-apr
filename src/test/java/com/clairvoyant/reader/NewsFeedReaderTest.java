@@ -22,7 +22,7 @@ public class NewsFeedReaderTest {
 
   @Test
   public void shouldReadRssFeed() {
-    String url = "https://spring.io/blog/category/news.atom";
+        String url = "https://spring.io/blog/category/news.atom";
     List<SyndEntry> syndEntries = newsFeedReader.readNewsFeed(url);
     Assert.assertEquals(20, syndEntries.size());
   }
