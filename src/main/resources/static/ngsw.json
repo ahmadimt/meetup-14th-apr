@@ -7,6 +7,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
+        "/favicon.ico",
         "/index.html",
         "/inline.0230b75599c5eac0d3ac.bundle.js",
         "/main.04740e3019c668396594.bundle.js",
@@ -29,6 +30,7 @@
     "/main.04740e3019c668396594.bundle.js": "05788472ddbb2eb4959a40ddb855d4c43a04cae4",
     "/polyfills.46af3f84a403e219371b.bundle.js": "2433a5447fd85f5a3e010ff9c5fd06cfb2c8ddcd",
     "/styles.f751e5a7852fbb4e1151.bundle.css": "73d1ade0a053ec2dbc01fcb6aa297b4899c1384f",
+    "/favicon.ico": "64ecbd051544a8492d44e62cdf80f5d1bc171225",
     "/index.html": "f05e72a9276844a00d165bf5fd92cf0e214d0da7"
   }
 }
