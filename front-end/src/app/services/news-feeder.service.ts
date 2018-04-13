@@ -27,14 +27,14 @@ export class NewsFeederService {
   }
 
   getRssFeeds(): Observable<any> {
-    const options = { headers: this.httpHeaders }
+    const options = { headers: this.httpHeaders };
     return this.http.get(environment.REST_API_LOCATION + '/all-rss-feeds');
   }
 
   deletebyTitle(title: string) {
 
-    const params = new HttpParams().set('title', title);
+    const params = new HttpParams().set('param', title);
     const options = { headers: this.httpHeaders, params: params };
-    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/title?param=' + title);
+    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/title', options);
   }
 }
