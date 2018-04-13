@@ -19,4 +19,6 @@ public interface NewsFeedService {
   List<NewsFeedDto> getAllNewsFeed();
 
   NewsFeedDto getByTitle(String title);
+
+  void deleteByTitle(String title);
 }

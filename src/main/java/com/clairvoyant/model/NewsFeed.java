@@ -27,6 +27,11 @@ public class NewsFeed {
 
   public static NewsFeed from(NewsFeedDto newsFeedDto) {
     NewsFeed newsFeed = new NewsFeed();
+    newsFeed.setTitle(newsFeedDto.getTitle());
+    newsFeed.getAuthors().addAll(newsFeedDto.getAuthors());
+    newsFeed.setContents(newsFeedDto.getContents());
+    newsFeed.setPublishedDate(newsFeedDto.getPublishedDate());
+    newsFeed.setUpdatedDate(newsFeedDto.getUpdatedDate());
     newsFeed.setLink(newsFeedDto.getLink());
     return newsFeed;
   }

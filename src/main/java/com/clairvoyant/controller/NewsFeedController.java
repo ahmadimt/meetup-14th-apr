@@ -7,10 +7,13 @@ import com.clairvoyant.service.NewsFeedService;
 import com.rometools.rome.feed.synd.SyndEntry;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,18 +45,29 @@ public class NewsFeedController {
     return newsFeedService.save(NewsFeed.from(syndEntries));
   }
 
-  @PutMapping(value = "/newsfeed/",produces = MediaType.APPLICATION_JSON_VALUE)
-  public NewsFeed updateNewsFeed(@RequestBody NewsFeedDto newsFeed){
+  @PutMapping(value = "/newsfeed/", produces = MediaType.APPLICATION_JSON_VALUE)
+  public NewsFeed updateNewsFeed(@RequestBody NewsFeedDto newsFeed) {
     return newsFeedService.updateNewsFeed(newsFeed);
   }
 
-    @GetMapping(value = "/all-rss-feeds", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<NewsFeedDto>> getAll(){
+  @PostMapping(value = "/newsfeed/", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> saveNewsFeed(@RequestBody NewsFeedDto newsFeed) {
+    return ResponseEntity.ok(newsFeedService.saveNewsFeed(newsFeed));
+  }
+
+  @GetMapping(value = "/all-rss-feeds", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<NewsFeedDto>> getAll() {
     return ResponseEntity.ok(newsFeedService.getAllNewsFeed());
   }
 
   @GetMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<NewsFeedDto> getByTitle(@RequestParam String title){
+  public ResponseEntity<NewsFeedDto> getByTitle(@RequestParam String title) {
     return ResponseEntity.ok(newsFeedService.getByTitle(title));
+  }
+
+  @DeleteMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> deleteByTitle(@RequestParam String title) {
+    newsFeedService.deleteByTitle(title);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 }

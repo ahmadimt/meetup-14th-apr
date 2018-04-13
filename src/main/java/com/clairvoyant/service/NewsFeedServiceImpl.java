@@ -54,4 +54,12 @@ public class NewsFeedServiceImpl implements NewsFeedService {
   public NewsFeedDto getByTitle(String title) {
     return NewsFeedDto.from(newsFeedRepo.findByTitle(title));
   }
+
+  @Override
+  public void deleteByTitle(String title) {
+    NewsFeed newsFeed = newsFeedRepo.findByTitle(title);
+    if (Objects.nonNull(newsFeed)) {
+      newsFeedRepo.delete(newsFeed);
+    }
+  }
 }

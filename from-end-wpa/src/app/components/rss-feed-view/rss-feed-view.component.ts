@@ -22,7 +22,7 @@ export class RssFeedViewComponent implements OnInit {
         title: 'Author'
       },
       link: {
-        title: 'Link'
+        title: 'Link',
       },
       contents: {
         title: 'Contents',
