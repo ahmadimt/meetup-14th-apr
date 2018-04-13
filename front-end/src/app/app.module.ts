@@ -10,8 +10,8 @@ import { NewsFeederService } from './services/news-feeder.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RssFeedViewComponent } from './components/rss-feed-view/rss-feed-view.component';
-import { BroadCastdataServiceService } from './service/broad-castdata-service.service';
 import { RoutingModule } from './app.routing.module';
+import { BroadCastdataServiceService } from './services/broad-castdata-service.service';
 
 @NgModule({
   declarations: [

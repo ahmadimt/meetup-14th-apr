@@ -3,8 +3,8 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { NewsFeederService } from './services/news-feeder.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { RssFeed } from './model/rss-feed';
-import { BroadCastdataServiceService } from './service/broad-castdata-service.service';
 import { Router } from '@angular/router';
+import { BroadCastdataServiceService } from './services/broad-castdata-service.service';
 
 @Component({
   selector: 'app-root',
