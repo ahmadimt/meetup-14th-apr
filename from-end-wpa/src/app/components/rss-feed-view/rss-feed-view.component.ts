@@ -10,15 +10,45 @@ import { RssFeed } from '../../model/rss-feed';
   styleUrls: ['./rss-feed-view.component.css']
 })
 export class RssFeedViewComponent implements OnInit {
+  settings = {
+    actions: {
+      position: 'right'
+    },
+    columns: {
+      title: {
+        title: 'Title'
+      },
+      authors: {
+        title: 'Author'
+      },
+      link: {
+        title: 'Link'
+      },
+      contents: {
+        title: 'Contents',
+        type: 'html'
+      }
+    },
+    mode: 'inline',
+    noDataMessage: 'Data is Loading please Wait ....',
+    delete: {
+      confirmDelete: true,
+    },
+    add: {
+      confirmCreate: true,
+    },
+    edit: {
+      confirmSave: true,
+    }
+  };
 
-  
- 
 
-  constructor(private newsFeederService:NewsFeederService,private broadCastdataServiceService:BroadCastdataServiceService) { }
+
+  constructor(private newsFeederService: NewsFeederService, private broadCastdataServiceService: BroadCastdataServiceService) { }
 
   ngOnInit() { }
 
-  
+
   onDeleteConfirm(event) {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
@@ -40,52 +70,22 @@ export class RssFeedViewComponent implements OnInit {
     if (window.confirm('Are you sure you want to create?')) {
       event.newData['name'] += ' + added in code';
       event.confirm.resolve(event.newData);
-      console.log("create data",event);
-      let rssfeed=new RssFeed(event.newData)
-      this.newsFeederService.getUpdateOrCreatNewsFeed(rssfeed).subscribe(res=>{
-        console.log("saved entity",res);
-        
-      })
+      console.log('create data', event);
+      const rssfeed = new RssFeed(event.newData);
+      this.newsFeederService.getUpdateOrCreatNewsFeed(rssfeed).subscribe(res => {
+        console.log('saved entity', res);
+
+      });
     } else {
       event.confirm.reject();
     }
   }
 
-  rowSelected(event){
-    console.log('row selected',event);
-    
+  rowSelected(event) {
+    console.log('row selected', event);
+
   }
-  
-  settings = {
-    actions: {
-      position: 'right'
-    },
-        columns: {
-          title: {
-            title: 'Title'
-          },
-          authors: {
-            title: 'Author'
-          },
-          link: {
-            title: 'Link'
-          },
-          contents: {
-            title: 'Contents',
-            type: 'html'
-          }
-        },
-        mode:'inline',
-        noDataMessage: 'Data is Loading please Wait ....',
-        delete: {
-          confirmDelete: true,
-        },
-        add: {
-          confirmCreate: true,
-        },
-        edit: {
-          confirmSave: true,
-        }
-  };
+
+
 
 }

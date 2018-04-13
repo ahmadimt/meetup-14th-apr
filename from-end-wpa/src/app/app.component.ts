@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   title = 'RSS feed Reader';
   submitRssFeed: FormGroup;
 
-  actualData: any[]
+  actualData: any[];
 
   constructor(private newsFeederService: NewsFeederService,
     private broadCastdataServiceService: BroadCastdataServiceService,
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   onSubmit() {
     console.log(this.submitRssFeed.value);
 
-    this.fetchAllNewsFeedAndMapToUIModel(this.submitRssFeed.value.rssFeedTextInput)
+    this.fetchAllNewsFeedAndMapToUIModel(this.submitRssFeed.value.rssFeedTextInput);
   }
 
   fetchAllNewsFeedAndMapToUIModel(url: string) {
@@ -49,9 +49,9 @@ export class AppComponent implements OnInit {
 
       }, () => {
         this.broadCastdataServiceService.source = new LocalDataSource(this.actualData);
-        this.router.navigate(['/rss-feed-view'])
+        this.router.navigate(['/rss-feed-view']);
       }
-    )
+    );
   }
 
 }
