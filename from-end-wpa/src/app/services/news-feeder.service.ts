@@ -30,4 +30,11 @@ export class NewsFeederService {
     let options = { headers: this.httpHeaders}
     return this.http.get(environment.REST_API_LOCATION+'/all-rss-feeds');
   }
+
+  deletebyTitle(title: string) {
+   
+    let params = new HttpParams().set('title', title)
+    let options = { headers: this.httpHeaders, params: params };
+    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/', options);
+  }
 }

@@ -45,7 +45,8 @@ export class RssFeedViewComponent implements OnInit {
 
 
   actualData:any[]
-  constructor(private newsFeederService:NewsFeederService,private broadCastdataServiceService:BroadCastdataServiceService) { }
+  constructor(private newsFeederService:NewsFeederService,public broadCastdataServiceService:BroadCastdataServiceService) {
+   }
 
   ngOnInit() { 
 
@@ -56,7 +57,7 @@ export class RssFeedViewComponent implements OnInit {
       },(error)=>{
 
       },()=>{
-        
+
       })
     }
   }
@@ -64,7 +65,16 @@ export class RssFeedViewComponent implements OnInit {
 
   onDeleteConfirm(event) {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+     
+      console.log("on delete",event);
+      
+      this.newsFeederService.deletebyTitle(event.data.title).subscribe(res=>{
+        
+      },(error)=>{
+        event.confirm.reject();
+      },()=>{
+        event.confirm.resolve();
+      })
     } else {
       event.confirm.reject();
     }
