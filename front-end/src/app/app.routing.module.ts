@@ -1,15 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { RssFeedViewComponent } from './components/rss-feed-view/rss-feed-view.component';
-import { CreateNewRssComponent } from './components/create-new-rss/create-new-rss.component';
 
 
 const routes: Routes = [
     {
-        path: '', redirectTo: 'communications', pathMatch: 'full'
-    },
-    {
-        path: 'create-new', component: CreateNewRssComponent
+        path: '', redirectTo: 'rss-feed-view', pathMatch: 'full'
     },
     {
         path: 'rss-feed-view', component: RssFeedViewComponent 

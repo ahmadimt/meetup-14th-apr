@@ -35,6 +35,6 @@ export class NewsFeederService {
 
     const params = new HttpParams().set('title', title);
     const options = { headers: this.httpHeaders, params: params };
-    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/title', title);
+    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/title',options);
   }
 }
