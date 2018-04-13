@@ -47,7 +47,19 @@ export class RssFeedViewComponent implements OnInit {
   actualData:any[]
   constructor(private newsFeederService:NewsFeederService,private broadCastdataServiceService:BroadCastdataServiceService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+    if(!this.broadCastdataServiceService.source){
+      this.newsFeederService.getRssFeeds().subscribe(res=>{
+        this.actualData=res;
+        this.broadCastdataServiceService.source=new LocalDataSource(this.actualData); ;
+      },(error)=>{
+
+      },()=>{
+        
+      })
+    }
+  }
 
 
   onDeleteConfirm(event) {
