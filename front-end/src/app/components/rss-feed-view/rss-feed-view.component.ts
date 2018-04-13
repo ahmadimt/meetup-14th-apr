@@ -33,12 +33,19 @@ export class RssFeedViewComponent implements OnInit {
     noDataMessage: 'Data is Loading please Wait ....',
     delete: {
       confirmDelete: true,
+      deleteButtonContent: '<i class="material-icons">delete</i>'
     },
     add: {
       confirmCreate: true,
+      addButtonContent: '<i class="material-icons">add</i>',
+      createButtonContent: '<i class="material-icons">save</i>',
+      cancelButtonContent: '<i class="material-icons">cancel</i>'
     },
     edit: {
       confirmSave: true,
+      editButtonContent: '<i class="material-icons">mode_edit</i>',
+      saveButtonContent: '<i class="material-icons">update</i>',
+      cancelButtonContent: '<i class="material-icons">cancel</i>',
     }
   };
 
@@ -72,7 +79,7 @@ export class RssFeedViewComponent implements OnInit {
         event.confirm.reject();
       }, () => {
         event.confirm.resolve();
-      })
+      });
     } else {
       event.confirm.reject();
     }
@@ -82,6 +89,20 @@ export class RssFeedViewComponent implements OnInit {
     if (window.confirm('Are you sure you want to save?')) {
       event.newData['name'] += ' + added in code';
       event.confirm.resolve(event.newData);
+      let rssfeed: any = Object.assign({}, event.newData)
+      let authors: any[] = new Array();
+      authors.push(event.newData.authors)
+
+      rssfeed.id = "any";
+      rssfeed.updatedDate = '';
+      rssfeed.publishedDate = '';
+      rssfeed.authors = authors;
+      this.newsFeederService.updateNewsFeed(rssfeed).subscribe(res => {
+      }, (error) => {
+        event.confirm.reject();
+      }, () => {
+        event.confirm.resolve();
+      });
     } else {
       event.confirm.reject();
     }

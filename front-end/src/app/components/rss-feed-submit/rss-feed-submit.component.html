@@ -1,14 +1,14 @@
-<div class="container" style="margin-left: 30%; margin-top: 5%;">
+<div class="container" style="margin-left: 20%; margin-top: 5%;">
 
-  <form [formGroup]="submitRssFeed" (ngSubmit)="onSubmit()">
-      <div class="form-group col-md-8">
-          <label class="center-block">Enter Url to read rss feed:
+    <form [formGroup]="submitRssFeed" (ngSubmit)="onSubmit()">
+        <div class="form-group col-md-8">
+            <label class="center-block">Enter Url to read rss feed:
           <input class="form-control" formControlName="rssFeedTextInput">
         </label>
         </div>
         <div class=" col-md-4" style="margin-top: 2vh;">
-          <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
-  </form>
- 
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+
 </div>

@@ -117,7 +117,10 @@ public class NewsFeed {
   public static NewsFeed from(NewsFeed newsFeed, NewsFeedDto newsFeedDto) {
     newsFeed.setTitle(newsFeedDto.getTitle());
     newsFeed.setContents(newsFeedDto.getContents());
-
+    newsFeed.setUpdatedDate(newsFeedDto.getUpdatedDate());
+    newsFeed.setPublishedDate(newsFeedDto.getPublishedDate());
+    newsFeed.setAuthors(newsFeedDto.getAuthors());
+    newsFeed.setLink(newsFeedDto.getLink());
     return newsFeed;
   }
 }
