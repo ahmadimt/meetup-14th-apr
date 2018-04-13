@@ -2,13 +2,13 @@ $table-font-color: #606c71;
 $table-border-color: #e9ebec;
 :host /deep/ ng2-smart-table thead>tr>th {
     text-align: left;
-    font-size: 1.875em;
+    font-size: 1.5em;
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 :host /deep/ ng2-smart-table tbody>tr>td {
     text-align: left;
-    font-size: 1.875em;
+    font-size: 1.5em;
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
@@ -30,19 +30,19 @@ $table-border-color: #e9ebec;
 :host /deep/ .pagination {
     position: relative;
     float: right;
-    font-size: 1.875em;
+    font-size: 1.5em;
 }
 
 :host /deep/ .pagination>li>a,
 .pagination>li>span {
     position: relative;
     float: left;
-    font-size: 1.875em;
+    font-size: 1.5em;
 }
 
 :host /deep/ .ng2-smart-table-pager {
     display: inline-flex;
-    font-size: 1.875em;
+    font-size: 1.5em;
     padding: 0;
     float: right;
 }

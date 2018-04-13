@@ -72,7 +72,6 @@ export class RssFeedViewComponent implements OnInit {
           },
           contents: {
             title: 'Contents',
-            width: '60px',
             type: 'html'
           }
         },
