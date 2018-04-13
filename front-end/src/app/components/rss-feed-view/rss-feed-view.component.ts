@@ -44,19 +44,19 @@ export class RssFeedViewComponent implements OnInit {
 
 
 
-  actualData:any[]
-  constructor(private newsFeederService:NewsFeederService,public broadCastdataServiceService:BroadCastdataServiceService) {
-   }
+  actualData: any[]
+  constructor(private newsFeederService: NewsFeederService, public broadCastdataServiceService: BroadCastdataServiceService) {
+  }
 
-  ngOnInit() { 
+  ngOnInit() {
 
-    if(!this.broadCastdataServiceService.source){
-      this.newsFeederService.getRssFeeds().subscribe(res=>{
-        this.actualData=res;
-        this.broadCastdataServiceService.source=new LocalDataSource(this.actualData); ;
-      },(error)=>{
+    if (!this.broadCastdataServiceService.source) {
+      this.newsFeederService.getRssFeeds().subscribe(res => {
+        this.actualData = res;
+        this.broadCastdataServiceService.source = new LocalDataSource(this.actualData);;
+      }, (error) => {
 
-      },()=>{
+      }, () => {
 
       })
     }
@@ -65,14 +65,14 @@ export class RssFeedViewComponent implements OnInit {
 
   onDeleteConfirm(event) {
     if (window.confirm('Are you sure you want to delete?')) {
-     
-      console.log("on delete",event);
-      
-      this.newsFeederService.deletebyTitle(event.data.title).subscribe(res=>{
-        
-      },(error)=>{
+
+      console.log("on delete", event);
+
+      this.newsFeederService.deletebyTitle(event.data.title).subscribe(res => {
+
+      }, (error) => {
         event.confirm.reject();
-      },()=>{
+      }, () => {
         event.confirm.resolve();
       })
     } else {
@@ -94,27 +94,27 @@ export class RssFeedViewComponent implements OnInit {
       event.newData['name'] += ' + added in code';
       event.confirm.resolve(event.newData);
 
-      let rssfeed:any=Object.assign({},event.newData)
-      let authors:any[]=new Array();
+      let rssfeed: any = Object.assign({}, event.newData)
+      let authors: any[] = new Array();
       authors.push(event.newData.authors)
 
-      rssfeed.id="any";
-      rssfeed.updatedDate='';
-      rssfeed.publishedDate= '';
-      rssfeed.authors=authors;
+      rssfeed.id = "any";
+      rssfeed.updatedDate = '';
+      rssfeed.publishedDate = '';
+      rssfeed.authors = authors;
 
-      console.log("create data",rssfeed);
+      console.log("create data", rssfeed);
 
-      this.newsFeederService.getUpdateOrCreatNewsFeed(rssfeed).subscribe(res=>{
-        console.log("saved entity",res);
+      this.newsFeederService.getUpdateOrCreatNewsFeed(rssfeed).subscribe(res => {
+        console.log("saved entity", res);
 
-      },(error)=>{
+      }, (error) => {
 
-      },()=>{
-          this.newsFeederService.getRssFeeds().subscribe(res=>{
-            this.actualData=res;
-            this.broadCastdataServiceService.source=new LocalDataSource(this.actualData); ;
-          })
+      }, () => {
+        this.newsFeederService.getRssFeeds().subscribe(res => {
+          this.actualData = res;
+          this.broadCastdataServiceService.source = new LocalDataSource(this.actualData);;
+        })
       })
     } else {
       event.confirm.reject();

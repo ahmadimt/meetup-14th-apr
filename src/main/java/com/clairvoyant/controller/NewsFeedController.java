@@ -66,7 +66,7 @@ public class NewsFeedController {
   }
 
   @DeleteMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<NewsFeedDto> deleteByTitle(@RequestParam String title) {
+  public ResponseEntity<NewsFeedDto> deleteByTitle(@RequestBody String title) {
     newsFeedService.deleteByTitle(title);
     return new ResponseEntity(HttpStatus.NO_CONTENT);
   }

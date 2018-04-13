@@ -5,8 +5,7 @@
 
 export const environment = {
   production: false,
-    REST_API_LOCATION: 'http://localhost:8080'  
-  // REST_API_LOCATION:'http://ec2-13-127-170-229.ap-south-1.compute.amazonaws.com:8090'
+  REST_API_LOCATION: 'http://localhost:8080'
 
 };
 
