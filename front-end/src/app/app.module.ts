@@ -12,11 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RssFeedViewComponent } from './components/rss-feed-view/rss-feed-view.component';
 import { RoutingModule } from './app.routing.module';
 import { BroadCastdataServiceService } from './services/broad-castdata-service.service';
+import { RssFeedSubmitComponent } from './components/rss-feed-submit/rss-feed-submit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RssFeedViewComponent
+    RssFeedViewComponent,
+    RssFeedSubmitComponent
   ],
   imports: [
     BrowserModule,

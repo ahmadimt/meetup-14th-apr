@@ -42,11 +42,9 @@ export class RssFeedViewComponent implements OnInit {
     }
   };
 
-
-
   actualData: any[]
-  constructor(private newsFeederService: NewsFeederService, public broadCastdataServiceService: BroadCastdataServiceService) {
-  }
+
+  constructor(private newsFeederService: NewsFeederService, public broadCastdataServiceService: BroadCastdataServiceService) { }
 
   ngOnInit() {
 
