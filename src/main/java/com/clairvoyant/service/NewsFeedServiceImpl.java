@@ -39,6 +39,11 @@ public class NewsFeedServiceImpl implements NewsFeedService {
   }
 
   @Override
+  public NewsFeedDto saveNewsFeed(NewsFeedDto newsFeedDto) {
+    return NewsFeedDto.from(newsFeedRepo.save(NewsFeed.from(newsFeedDto)));
+  }
+
+  @Override
   public List<NewsFeedDto> getAllNewsFeed() {
 
     return newsFeedRepo.findAll().stream().map(NewsFeedDto::from)

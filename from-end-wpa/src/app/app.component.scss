@@ -1,0 +1,65 @@
+$table-font-color: #606c71;
+$table-border-color: #e9ebec;
+:host /deep/ ng2-smart-table thead>tr>th {
+    text-align: left;
+    font-size: 1.875em;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+:host /deep/ ng2-smart-table tbody>tr>td {
+    text-align: left;
+    font-size: 1.875em;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card [data-background-color="blue"] {
+    background: linear-gradient(60deg, #1665ad, #00acc1);
+}
+
+:host /deep/ ng2-smart-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+:host /deep/ .pagination {
+    position: relative;
+    float: right;
+    font-size: 1.875em;
+}
+
+:host /deep/ .pagination>li>a,
+.pagination>li>span {
+    position: relative;
+    float: left;
+    font-size: 1.875em;
+}
+
+:host /deep/ .ng2-smart-table-pager {
+    display: inline-flex;
+    font-size: 1.875em;
+    padding: 0;
+    float: right;
+}
+
+:host /deep/ .left-align {
+    text-align: left;
+}
+
+.ng2-smart-action,
+ng2-smart-action-custom-custom {
+    background-color: #1665ad;
+    text-transform: capitalize;
+    color: white;
+    background: linear-gradient(60deg, #1665ad, #00acc1) !important;
+}
+
+a {
+    color: #1e6bb8;
+    text-decoration: none;
+}

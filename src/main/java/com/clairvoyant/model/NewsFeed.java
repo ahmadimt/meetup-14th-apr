@@ -25,6 +25,12 @@ public class NewsFeed {
   private Date updatedDate;
   private Date publishedDate;
 
+  public static NewsFeed from(NewsFeedDto newsFeedDto) {
+    NewsFeed newsFeed = new NewsFeed();
+    newsFeed.setLink(newsFeedDto.getLink());
+    return newsFeed;
+  }
+
   public String getId() {
     return id;
   }

@@ -14,6 +14,8 @@ public interface NewsFeedService {
 
   NewsFeed updateNewsFeed(NewsFeedDto newsFeedDto);
 
+  NewsFeedDto saveNewsFeed(NewsFeedDto newsFeedDto);
+
   List<NewsFeedDto> getAllNewsFeed();
 
   NewsFeedDto getByTitle(String title);

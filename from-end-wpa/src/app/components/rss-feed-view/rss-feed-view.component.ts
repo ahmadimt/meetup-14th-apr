@@ -57,6 +57,9 @@ export class RssFeedViewComponent implements OnInit {
   }
   
   settings = {
+    actions: {
+      position: 'right'
+    },
         columns: {
           title: {
             title: 'Title'

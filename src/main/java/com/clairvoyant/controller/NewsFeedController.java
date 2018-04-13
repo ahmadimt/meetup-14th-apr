@@ -37,23 +37,28 @@ public class NewsFeedController {
 
   @PostMapping(value = "/rss",
       produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-  public List<NewsFeed> saveRssFeed(@RequestBody String url) {
+  public ResponseEntity<List<NewsFeed>> saveRssFeed(@RequestBody String url) {
     List<SyndEntry> syndEntries = newsFeedReader.readNewsFeed(url);
-    return newsFeedService.save(NewsFeed.from(syndEntries));
+    return ResponseEntity.ok( newsFeedService.save(NewsFeed.from(syndEntries)));
   }
 
-  @PutMapping(value = "/newsfeed/",produces = MediaType.APPLICATION_JSON_VALUE)
-  public NewsFeed updateNewsFeed(@RequestBody NewsFeedDto newsFeed){
-    return newsFeedService.updateNewsFeed(newsFeed);
+  @PutMapping(value = "/newsfeed/", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> updateNewsFeed(@RequestBody NewsFeedDto newsFeed) {
+    return ResponseEntity.ok(NewsFeedDto.from(newsFeedService.updateNewsFeed(newsFeed)));
+  }
+
+  @PostMapping(value = "/newsfeed/", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> saveNewsFeed(@RequestBody NewsFeedDto newsFeed) {
+    return ResponseEntity.ok(newsFeedService.saveNewsFeed(newsFeed));
   }
 
   @GetMapping(value = "/newfeed", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<NewsFeedDto>> getAll(){
+  public ResponseEntity<List<NewsFeedDto>> getAll() {
     return ResponseEntity.ok(newsFeedService.getAllNewsFeed());
   }
 
   @GetMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<NewsFeedDto> getByTitle(@RequestParam String title){
+  public ResponseEntity<NewsFeedDto> getByTitle(@RequestParam String title) {
     return ResponseEntity.ok(newsFeedService.getByTitle(title));
   }
 }
