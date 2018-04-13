@@ -60,13 +60,13 @@ public class NewsFeedController {
     return ResponseEntity.ok(newsFeedService.getAllNewsFeed());
   }
 
-  @GetMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
+  @GetMapping(value = "/newsfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<NewsFeedDto> getByTitle(@RequestParam String title) {
     return ResponseEntity.ok(newsFeedService.getByTitle(title));
   }
 
-  @DeleteMapping(value = "/newfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<NewsFeedDto> deleteByTitle(@RequestBody String title) {
+  @DeleteMapping(value = "/newsfeed/title", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<NewsFeedDto> deleteByTitle(@RequestParam("param") String title) {
     newsFeedService.deleteByTitle(title);
     return new ResponseEntity(HttpStatus.NO_CONTENT);
   }

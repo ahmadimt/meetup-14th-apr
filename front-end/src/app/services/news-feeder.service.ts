@@ -11,7 +11,7 @@ export class NewsFeederService {
   constructor(private http: HttpClient) { }
 
   private httpHeaders: HttpHeaders = new HttpHeaders({
-    'accept': 'application/json',
+    'Content-Type': 'application/json',
   });
 
   getAllRssFeeds(url: string): Observable<any> {
@@ -35,6 +35,6 @@ export class NewsFeederService {
 
     const params = new HttpParams().set('title', title);
     const options = { headers: this.httpHeaders, params: params };
-    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/title', title);
+    return this.http.delete(environment.REST_API_LOCATION + '/newsfeed/title?param=' + title);
   }
 }
