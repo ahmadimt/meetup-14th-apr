@@ -3,6 +3,8 @@ import { Ng2SmartTableModule,LocalDataSource } from 'ng2-smart-table';
 import { NewsFeederService } from './services/news-feeder.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { RssFeed } from './model/rss-feed';
+import { BroadCastdataServiceService } from './service/broad-castdata-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +14,15 @@ import { RssFeed } from './model/rss-feed';
 export class AppComponent implements OnInit {
 
   
-  title = 'RSS feed Reader';
-  source: LocalDataSource;
+  title = 'RSS feed Reader'; 
   submitRssFeed:FormGroup;
+ 
   actualData:any[]
- // dataModified:RssFeed[]=new Array();
   
-  constructor(private newsFeederService:NewsFeederService) {
-    // create the source
+  constructor(private newsFeederService:NewsFeederService,
+    private broadCastdataServiceService:BroadCastdataServiceService,
+    private router:Router) {
+  
   }
 
   ngOnInit(): void {
@@ -46,48 +49,10 @@ export class AppComponent implements OnInit {
       },(error)=>{
 
       },()=>{
-        this.source = new LocalDataSource(this.actualData); 
+        this.broadCastdataServiceService.source = new LocalDataSource(this.actualData); 
+        this.router.navigate(['/rss-feed-view'])
       }
     )
   }
-
-  transformData(){
-
-  }
   
-  settings = {
-    columns: {
-      title: {
-        title: 'Title'
-      },
-      authors: {
-        title: 'Author'
-      },
-      link: {
-        title: 'Link'
-      },
-      contents: {
-        title: 'Contents',
-        width:'60px',
-        type:'html'
-      }
-    }
-  };
-
-//   data = [
-//     {
-//       title: 1,
-//       author: "Leanne Graham",
-//       link: "Bret",
-//       contents: "Sincere@april.biz"
-//     },
-//     // ... other rows here
-//     {
-//       title: 11,
-//       author: "Nicholas DuBuque",
-//       link: "Nicholas.Stanton",
-//       contents: "Rey.Padberg@rosamond.biz"
-//     }
-//   ];
-
  }

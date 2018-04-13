@@ -1,0 +1,9 @@
+<div>
+  <ng2-smart-table [settings]="settings" 
+  [source]="broadCastdataServiceService.source"
+  (deleteConfirm)="onDeleteConfirm($event)"
+  (editConfirm)="onSaveConfirm($event)"
+  (createConfirm)="onCreateConfirm($event)"
+  (userRowSelect)="rowSelected($event)">
+  </ng2-smart-table>
+</div>
